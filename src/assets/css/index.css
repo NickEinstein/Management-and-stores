@@ -1,11 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Avenir:400,600,700');
 
+
 * {
   box-sizing: border-box;
+  font-family: avenir;
+}* {
+  margin: 0;
+  padding:0;
 }
 
+h1, h2, h3, h4, h5, h6, p,
+div, header, section{
+  margin: 0;
+  padding: 0;
+}
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+.flex{
+  display: flex;
+}
+.flex-align{
+  display: flex;
+  align-items: center;
+}
+.flex-align-top{
+  display: flex;
+  align-items: top;
+}
 
+/* .page44 p{
+  margin:0;
+  padding: 0;
+} */
+/* .check{
+  margin-bottom: 0;
+  padding-bottom: 0;
+} */
 
+.ant-table .ant-table-thead>tr>th {
+  background-color: #43425D;
+  color:white
+}
+.ant-input-affix-wrapper>input[type=text] {
+  background-color: #D5FFD5;
+}
 
 body {
   margin: 0;
@@ -212,10 +253,6 @@ section {
   display: flex;
 }
 
-.ant-table-thead{
-  background-color: #F0F0F0;
-}
-
 footer {
   position: relative;
   background-color: #454545;
@@ -223,19 +260,20 @@ footer {
   height: 58px;
 }
 
-.frank .ant-form-item{
-  margin:0;
-}
-
 div.banner {
   width: 100%;
   padding: 130px 0 100px;
   background-size: cover;
   background-blend-mode: luminosity;
+  background-image: url('../images/banner.png');
   background-color: #1C811C55;
   background-position-y: 20%;
 }
-
+.formImage{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 div.banner .login {
   margin: 0 auto;
   max-width: 600px;
@@ -331,6 +369,14 @@ div.dept-news h4 {
   border-bottom: none;
   padding-bottom: 0;
 }
+
+
+.ant-steps-vertical > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail::after {
+    width: 1px;
+    height: 100%;
+    margin-left: 6px;
+}
+
 .headline .date {
   background-color: #1C811C1F;
   padding: 5px 10px;
@@ -402,122 +448,3 @@ div.bottom ul {
     padding-left: 0;
   }
 }
-
-.MuiButton-containedPrimary{
-  margin-right: 6px;
-}
-
-.col-sm-3{
-  width: 2px;
-}
-
-
-
-/* NICK */
-
-* {
-  margin: 0;
-  padding:0;
-}
-
-h1, h2, h3, h4, h5, h6, p,
-div, header, section{
-  margin: 0;
-  /* margin-bottom: 0; */
-  padding: 0;
-}
-.flex-between{
-  display: flex;
-  justify-content: space-between;
-  /* align-items: center; */
-}
-.marginBottom{
-margin-bottom: 10px;
-}
-.border{
-  border: 2px solid #0000000A;
-}
-.background{
-  background-color: #F5F7F9;
-}
-/* .padding{
-  padding:20px;
-} */
-.flex{
-  display: flex;
-}
-.flex-align{
-  display: flex;
-  align-items: center;
-}
-.flex-align-top{
-  display: flex;
-  align-items: top;
-}
-/* .position{
-  
-  position: absolute;
-right:0;
-top:50%;
-} */
-.position{
-  /* float: right; */
-  /* border: 2px solid red; */
-  position: relative;
-right:15px;
-bottom:50px;
-}
-
-/* .page44 p{
-  margin:0;
-  padding: 0;
-} */
-/* .check{
-  margin-bottom: 0;
-  padding-bottom: 0;
-} */
-
-.colorW{
-  background-color: white;
-}
-
-.page21 .ant-table>.ant-table-thead>tr>th {
-  background-color: #BCBCBC;
-  color:white
-}
-.page26 .ant-table .ant-table-thead>tr>th, .page34 .ant-table .ant-table-thead>tr>th {
-  background-color: #43425D;
-  color:white
-}
-.ant-input-affix-wrapper>input[type=text] {
-  background-color: #D5FFD5;
-}
-.bold{
-  font-weight: bold;
-}
-.opacity{
-  opacity:0.4
-}
-.ant-row, .ant-form-item{
-width: 100%;
-row-gap: 10px;
-}
-.ant-upload{
-
-border-top-right-radius: 10px;
-}
-.itemRequest .ant-upload{
-  /* width: 45%; */
-  border-top-right-radius: 10px;
-  }
-  
-   .ant-form-item-label label{
-    color:#909090
-  }
-
-.width{
-  width:100%
-}
-
-
-/* NICk */
