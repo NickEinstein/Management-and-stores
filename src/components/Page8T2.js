@@ -1,63 +1,73 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography, Select,Button } from 'antd';
+import {SwapTableContext} from './Contexts/SwapTableContext'
+
+
 const originData = [];
 const array = []
 const { Option } = Select;
 const { TextArea } = Input;
+const formRef = React.createRef();
 
-const EditableCell = ({
-  editing,
-  dataIndex,
-  title,
-  inputType,
-  record,
-  index,
-  children,
-  ...restProps
-}) => {
-  const inputNode = inputType === 'number' ? <InputNumber /> 
-  :
-   <Select>
 
-<Option value="1">Not Identified</Option>
-                                    <Option value="2">Closed</Option>
-                                    <Option value="3">Communicated</Option>
-                                    <Option value="4">Identified</Option>
-                                    <Option value="5">Resolved</Option>
-                                    <Option value="6">Cancelled</Option>
-  </Select>;
-  return (
-    <td {...restProps}>
-      {editing ? (
-        <Form.Item
-          name={dataIndex}
-          style={{
-            margin: 0,
-          }}
-          rules={[
-            {
-              required: true,
-              message: `Please Input ${title}!`,
-            },
-          ]}
-        >
-          {inputNode}
-        </Form.Item>
-      ) : (
-        children
-      )}
-    </td>
-  );
-};
+const Page8T2 = (props) => {
+  const EditableCell = ({
+    editing,
+    dataIndex,
+    title,
+    inputType,
+    record,
+    index,
+    children,
+    ...restProps
+  }) => {
+    const inputNode = inputType === 'number' ? <InputNumber /> 
+    :
+     <Select>
+  
+  <Option value="1">Not Identified</Option>
+                                      <Option value="2">Closed</Option>
+                                      <Option value="3">Communicated</Option>
+                                      <Option value="4">Identified</Option>
+                                      <Option value="5">Resolved</Option>
+                                      <Option value="6">Cancelled</Option>
+    </Select>;
+    return (
+      <td {...restProps}>
+        {editing ? (
+          <Form.Item
+            name={dataIndex}
+            style={{
+              margin: 0,
+            }}
+            rules={[
+              {
+                required: true,
+                message: `Please Input ${title}!`,
+              },
+            ]}
+          >
+            {inputNode}
+          </Form.Item>
+        ) : (
+          children
+        )}
+      </td>
+    );
+  };
 
-const Page8T2 = () => {
+
+
+
   const [form] = Form.useForm();
   const [data, setData] = useState(originData);
   const [editingKey, setEditingKey] = useState('');
   const [array, setArray] = useState([]);
   const [count, setCount] = useState(10);
+
+  const { handleValue2, valued2} = useContext(SwapTableContext)
   
-  const formRef = React.createRef();
+ 
   const isEditing = (record) => record.key === editingKey;
 
   
@@ -66,7 +76,7 @@ const Page8T2 = () => {
     form.setFieldsValue({
       name: '',
       sequence: '',
-      address: '',
+      update: '',
       ...record,
     });
     setEditingKey(record.key);
@@ -99,45 +109,6 @@ const Page8T2 = () => {
 
   const columns = [
     {
-    title: 'Action',
-    dataIndex: 'action',
-    render: (_, record) => {
-    //   const editable = isEditing(record);
-      return  data.length >= 1  ? (
-        <span>
-            <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-              <a>Delete</a>
-            </Popconfirm>
-              {/* <a
-              onClick={() => handleDelete(record.key)}
-              >Delete</a> */}
-           
-        </span>
-      ) : (
-      null
-      );
-    },
-  },
-  
-    {
-      title: 'name',
-      dataIndex: 'name',
-      width: '25%',
-      editable: true,
-    },
-    {
-      title: 'Approved Sequence',
-      dataIndex: 'sequence',
-      width: '15%',
-      editable: true,
-    },
-    {
-      title: 'address',
-      dataIndex: 'address',
-      width: '40%',
-    //   editable: true,
-    },
-    {
       title: 'operation',
       dataIndex: 'operation',
       render: (_, record) => {
@@ -159,8 +130,54 @@ const Page8T2 = () => {
           </span>
         ) : (
           <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-            Edit
+            <b>Edit</b>
           </Typography.Link>
+        );
+      },
+    },
+  
+    {
+      title: 'Title',
+      dataIndex: 'name',
+      width: '25%',
+      editable: true,
+    },
+    {
+      title: 'Approved Sequence',
+      dataIndex: 'sequence',
+      width: '15%',
+      editable: true,
+    },
+    {
+      title: 'Last Updated',
+      dataIndex: 'update',
+      width: '35%',
+    //   editable: true,
+    },
+    {
+      title: 'Last Updated by',
+      dataIndex: 'by',
+      width: '40%',
+    //   editable: true,
+    },
+
+    {
+      title: 'Action',
+      dataIndex: 'action',
+      render: (_, record) => {
+      //   const editable = isEditing(record);
+        return  data.length >= 1  ? (
+          <span>
+              <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+                <a>Delete</a>
+              </Popconfirm>
+                {/* <a
+                onClick={() => handleDelete(record.key)}
+                >Delete</a> */}
+             
+          </span>
+        ) : (
+        null
         );
       },
     },
@@ -177,7 +194,7 @@ const Page8T2 = () => {
 //     // key: i.toString(),
 //     // name: `Edrward ${i}`,
 //     // age: 32,
-//     // address: `London Park no. ${i}`,
+//     // update: `London Park no. ${i}`,
 
 //     if (newObject[0] != 0) {
 //         const newData = {
@@ -200,7 +217,7 @@ const handleAdd = () => {
     key: count,
     name: array[0].name,
     sequence: array[0].sequence,
-    address: `London, Park Lane no. ${count}`,
+    update: `London, Park Lane no. ${count}`,
   };
   
     setData([...data, newData]) 
@@ -210,8 +227,10 @@ const handleAdd = () => {
 };
 
 useEffect(()=>{
+  handleValue2(data)
+  console.log(valued2)
   console.log('use effect ran')
-})
+}, )
 
   const onReset = () => {
     formRef.current.resetFields();
@@ -259,7 +278,7 @@ const onFinishFailed = (errorInfo) => {
        
         <div className="flex">
          
-          <div style={{ width: "33%", padding: "15px" }}>
+          <div style={{ width: "30%", padding: "15px" }}>
             <Form
     
        ref={formRef}
@@ -308,7 +327,7 @@ const onFinishFailed = (errorInfo) => {
     
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <Form.Item
-                                        style={{ width: "90%" }}
+                                        style={{ width: "100%" }}
                                         label="Sequence"
                                         name="sequence"
                                         rules={[
@@ -318,7 +337,7 @@ const onFinishFailed = (errorInfo) => {
                                             },
                                         ]}
                                     >
-                                        <InputNumber style={{ width: "90%", border: "none", borderBottom: "1px solid", borderColor: "#D6D6D6" }} />
+                                        <InputNumber style={{ width: "100%", border: "none", borderBottom: "1px solid", borderColor: "#D6D6D6" }} />
                                     </Form.Item>
     
                                 </div>
@@ -340,7 +359,7 @@ const onFinishFailed = (errorInfo) => {
         </Form>
           </div>
 
-      <div style={{ width: "67%",}}>
+      <div style={{ width: "70%",}}>
         <Form form={form} component={false}>
         
         <Table

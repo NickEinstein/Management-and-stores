@@ -5,52 +5,57 @@ const array = []
 const { Option } = Select;
 const { TextArea } = Input;
 
-const EditableCell = ({
-  editing,
-  dataIndex,
-  title,
-  inputType,
-  record,
-  index,
-  children,
-  ...restProps
-}) => {
-  const inputNode = inputType === 'number' ? <Input /> 
-  :
-   <Select>
-
-<Option value="1">Not Identified</Option>
-                                    <Option value="2">Closed</Option>
-                                    <Option value="3">Communicated</Option>
-                                    <Option value="4">Identified</Option>
-                                    <Option value="5">Resolved</Option>
-                                    <Option value="6">Cancelled</Option>
-  </Select>;
-  return (
-    <td {...restProps}>
-      {editing ? (
-        <Form.Item
-          name={dataIndex}
-          style={{
-            margin: 0,
-          }}
-          rules={[
-            {
-              required: true,
-              message: `Please Input ${title}!`,
-            },
-          ]}
-        >
-          {inputNode}
-        </Form.Item>
-      ) : (
-        children
-      )}
-    </td>
-  );
-};
 
 const Page8T3 = () => {
+  const EditableCell = ({
+    editing,
+    dataIndex,
+    title,
+    inputType,
+    record,
+    index,
+    children,
+    ...restProps
+  }) => {
+    const inputNode = inputType === 'number' ? <Input /> 
+    :
+     <Select>
+  
+  <Option value="1">Not Identified</Option>
+                                      <Option value="2">Closed</Option>
+                                      <Option value="3">Communicated</Option>
+                                      <Option value="4">Identified</Option>
+                                      <Option value="5">Resolved</Option>
+                                      <Option value="6">Cancelled</Option>
+    </Select>;
+    return (
+      <td {...restProps}>
+        {editing ? (
+          <Form.Item
+            name={dataIndex}
+            style={{
+              margin: 0,
+            }}
+            rules={[
+              {
+                required: true,
+                message: `Please Input ${title}!`,
+              },
+            ]}
+          >
+            {inputNode}
+          </Form.Item>
+        ) : (
+          children
+        )}
+      </td>
+    );
+  };
+  
+
+
+
+
   const [form] = Form.useForm();
   const [data, setData] = useState(originData);
   const [editingKey, setEditingKey] = useState('');
@@ -99,26 +104,36 @@ const Page8T3 = () => {
 
   const columns = [
     {
-    title: 'Action',
-    dataIndex: 'action',
-    render: (_, record) => {
-    //   const editable = isEditing(record);
-      return  data.length >= 1  ? (
-        <span>
-            <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-              <a>Delete</a>
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (_, record) => {
+        const editable = isEditing(record);
+        return editable ? (
+          <span>
+            <a
+            //   href="javascript:;"
+              onClick={() => save(record.key)}
+              style={{
+                marginRight: 8,
+              }}
+            >
+              Save
+            </a>
+            <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
+              <a>Cancel</a>
             </Popconfirm>
-              {/* <a
-              onClick={() => handleDelete(record.key)}
-              >Delete</a> */}
-           
-        </span>
-      ) : (
-      null
-      );
+          </span>
+        ) : (
+          <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
+            <b>Edit</b>
+          </Typography.Link>
+        );
+      },
     },
-  },
   
+
+     
+   
     {
       title: 'Category',
       dataIndex: 'name',
@@ -144,32 +159,26 @@ const Page8T3 = () => {
     //   editable: true,
     },
     {
-      title: 'operation',
-      dataIndex: 'operation',
+      title: 'Action',
+      dataIndex: 'action',
       render: (_, record) => {
-        const editable = isEditing(record);
-        return editable ? (
+      //   const editable = isEditing(record);
+        return  data.length >= 1  ? (
           <span>
-            <a
-            //   href="javascript:;"
-              onClick={() => save(record.key)}
-              style={{
-                marginRight: 8,
-              }}
-            >
-              Save
-            </a>
-            <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-              <a>Cancel</a>
-            </Popconfirm>
+              <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+                <a>Delete</a>
+              </Popconfirm>
+                {/* <a
+                onClick={() => handleDelete(record.key)}
+                >Delete</a> */}
+             
           </span>
         ) : (
-          <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-            Edit
-          </Typography.Link>
+        null
         );
       },
     },
+    
   ];
   const handleDelete = (key) => {
     const newdata = [...data];

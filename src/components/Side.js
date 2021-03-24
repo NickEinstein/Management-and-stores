@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography, Select,Button } from 'antd';
-import { DeleteOutlined, UploadOutlined, CheckCircleOutlined} from '@ant-design/icons';
-
+import { DeleteOutlined, UploadOutlined,} from '@ant-design/icons';
+import { BsFillCircleFill,  } from "react-icons/bs";
 
 const Side = () => {
     const { Option } = Select;
   return (
       
-    <div style={{ paddingBottom:"10px"}} >
+    <div className="side" style={{ paddingBottom:"10px"}} >
         <Form style={{}}
     layout="vertical"
 >
@@ -58,7 +58,7 @@ const Side = () => {
                                             <p className="padding" style={{textAlign:"right"}}><b>[N]</b></p>
                                             <div className="flex">
                                                 <a  style={{textDecorationLine:"underline"}}>Payment Approval</a>
-                                                <UploadOutlined style={{marginTop:"5px", marginLeft:"5px"}} />
+                                                <UploadOutlined  style={{marginTop:"5px", marginLeft:"5px", fontSize:"10px"}} />
                                             </div>
                                         </div>
                                     </div>
@@ -66,9 +66,9 @@ const Side = () => {
                                     
                                    
                                 </div>
-                                <div className="flex border padding"  style={{margin:"10px 0", marginBottom:"0px", backgroundColor:"white"}}>
+                                <div className="flex-align border padding"  style={{margin:"10px 0", marginBottom:"0px", backgroundColor:"white"}}>
                                     <p>Status</p>
-                                    <div><CheckCircleOutlined style={{marginLeft:"5px"}} /></div>
+                                    <div><BsFillCircleFill color="red" style={{marginLeft:"5px", fontSize:"10px"}} /></div>
                                 </div>
 </Form>
     </div>

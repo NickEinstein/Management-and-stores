@@ -39,7 +39,7 @@ function callback(key) {
    style={{backgroundColor:(key == 2 && !change)?"#D5FFD5":"white", margin:"10px 0"}} 
    header={<p style={{fontWeight:(key == 2 && !change)?"bold":"normal"}}>Global Request Approval Sequence</p>} key="2">
        
-     <Page8T1/>
+     <Page8T2/>
 
    </Panel>
 

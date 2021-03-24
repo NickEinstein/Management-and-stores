@@ -97,3 +97,6 @@ border-top-right-radius: 10px;
    .ant-form-item-label label{
     color:#909090
   }
+  .side p, .side a{
+    font-size: 10px;
+  }

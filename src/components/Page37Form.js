@@ -116,12 +116,12 @@ function Page37Form(prop) {
                     </Form.Item>
 
                     <Form.Item
-                        label="Expected Date"
+                        label="Cost Implication [N]"
                         style={{marginLeft:"20px"}}
-                        name="Expected Date"
+                        name="Cost Implication"
                         rules={[{ required: true, message: 'Please input Cost IMplication!' }]}
                     >
-                          <DatePicker  style={{ width: "100%",border:"none", borderBottom: "1px solid  #909090",  }} />
+                          <Input  style={{ width: "100%",border:"none", borderBottom: "1px solid  #909090",  }} />
                     </Form.Item>
                 </div>
                 <div className="padding ">

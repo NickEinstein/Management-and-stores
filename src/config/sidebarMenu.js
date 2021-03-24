@@ -10,13 +10,13 @@ import PersonIcon from '@material-ui/icons/Person';
 
 export default [
   { title: 'Home', href: '/', icon: <BiEnvelope className="icon" /> },
-  { title: 'Inventory Manager', href: '/adminstore-portal/inventory-manager/requisition', icon: <BiEnvelope className="icon" />,
+  { title: 'Inventory Manager', href: '', icon: <BiEnvelope className="icon" />,
   children: [
     { title: 'Requisition', href: '/adminstore-portal/inventory-manager/requisition', icon: 'CP' },
     { title: 'Review Request', href: '/adminstore-portal/inventory-manager/review-request', icon: 'ED' },
-    { title: 'Warehouse', href: '/adminstore-portal/inventory-manager/inventory', icon: 'ED' }
+    { title: 'Inventory', href: '/adminstore-portal/inventory-manager/inventory', icon: 'ED' }
   ] },
-  { title: 'Warehouse Manager', href: '/adminstore-portal/warehouse-manager/requisition', icon: <RiUserSettingsLine className="icon" />,
+  { title: 'Warehouse Manager', href: '', icon: <RiUserSettingsLine className="icon" />,
   children: [
     { title: 'Requisition', href: '/adminstore-portal/warehouse-manager/requisition', icon: 'CP' },
     { title: 'Review Request', href: '/adminstore-portal/warehouse-manager/review-request', icon: 'ED' },

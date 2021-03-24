@@ -157,6 +157,8 @@ class Page5F extends React.Component {
     }
     onReset = () => {
         this.formRef.current.resetFields();
+    
+        
     };
     handleDelete = (key) => {
         const dataSource = [...this.state.dataSource];
@@ -231,6 +233,8 @@ class Page5F extends React.Component {
             console.log('Success:', values);
             // setFormData(values)
             const array = []
+            const key = {}
+
             array.push(values)
             // hold.push(values)
             this.setState({
@@ -241,7 +245,7 @@ class Page5F extends React.Component {
                 holder:(prevState=> prevState.push(values)),
             })
             this.handleAdd();
-            // this.onReset();
+            this.onReset();
             console.log('Success:', this.state.holder.length);
             // prop.handleHold(values)
             // formData = values

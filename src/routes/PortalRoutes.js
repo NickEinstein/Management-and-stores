@@ -14,11 +14,16 @@ import Page10 from '../components/Page10'
 import Page11 from '../components/Page11'
 import Page12 from '../components/Page12'
 import Page41 from '../components/Page41';
+import Example from '../components/Example';
+import Chartz from '../components/Chartz';
+import Chartings from '../components/Chartings';
+
+import DashboardRequest from '../components/DashboardRequest'
 
 
 
 
-// const Dashboard1 = lazy(() => import('../components/Dashboard1'))
+// const Chartz = lazy(() => import('../components/Chartz'))
 // const RequestForm = lazy(() => import('../components/RequestForm'))
 // const RequestReport = lazy(() => import('./../components/pages/RequestReport'))
 // const ViewMemoForm = lazy(() => import('../components/pages/ViewMemoForm'))
@@ -42,6 +47,12 @@ export default pure(() => (
       exact
     //  component={RequestMaintenance}
     component={Page5}
+    />
+     <ProtectedRoute
+      path='/adminstore-portal'
+      exact
+    //  component={RequestMaintenance}
+    component={Chartings}
     />
 
     <ProtectedRoute

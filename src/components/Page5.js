@@ -16,9 +16,9 @@ const Page5 = () => {
    
   return (
       
-    <div style={{marginTop:"100px", width:"100%",}} >
+    <div className="page5" style={{marginTop:"100px", width:"100%",}} >
 <div style={{display:"flex"}}>
-<div style={{width:"25%"}}>
+<div style={{width:"22%"}}>
     <Side/>
 </div>
 <div style={{width:"75%"}}>
